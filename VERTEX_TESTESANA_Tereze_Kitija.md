@@ -21,6 +21,7 @@ RTU Inženierzinātņu vidusskolas
 | Stāvokļa pārejas kļūda ar atkopšanos | Sistēma konstatē kļūdu un pēc tam atkopjas.                                       | Strādā. Uzrāda INVALID_STATE_TRANSITION kļūdu, notiek atkopšanās un veiksmīga nosēšanās.                                |
 | Jaukts anomāliju tests               | Sistēma apstrādā vairākas kļūdas bez darbības pārtraukuma.                        | Strādā. Lidojuma laikā parādās daudz kļūdas paziņojumu, notiek atkopšanās un veiksmīga nosēšanās.                                        |
 
+  
 ---
 
 # Nefunkcionālie testi
@@ -35,8 +36,11 @@ RTU Inženierzinātņu vidusskolas
 | Ilgstoša slodze (Soak test)    | Sistēma ilgstoši darbojas bez veiktspējas pasliktināšanās.     | Tika simulēta ilgstoša, nemainīga slodze 5 minūšu laikā, nosūtot 1500 HTTP pieprasījumus. Visi pieprasījumi tika apstrādāti veiksmīgi (100% OK, bez kļūdām). Vidējais atbildes laiks bija 14 ms, savukārt 95% pieprasījumu tika apstrādāti ātrāk par 20 ms, kas norāda uz ļoti stabilu sistēmas darbību ilgstošas slodzes apstākļos. Maksimālais atbildes laiks sasniedza 198 ms, tomēr šādi gadījumi bija reti un neietekmēja kopējo sistēmas veiktspēju. Testa rezultāti neuzrādīja būtisku veiktspējas degradāciju laika gaitā, kas liecina par sistēmas stabilitāti un spēju uzturēt nemainīgu darbību ilgstošas slodzes apstākļos.   |
 | Pīķa slodze (Spike test)       | Sistēma saglabā darbību pie strauja slodzes pieauguma.         | Pīķa slodzes testā tika simulēts straujš lietotāju skaita pieaugums, vienlaikus nosūtot 200 pieprasījumus. Visi pieprasījumi tika apstrādāti veiksmīgi (100% OK, bez kļūdām), kas liecina par sistēmas stabilitāti pat pie augstas slodzes. Tomēr vidējais atbildes laiks būtiski palielinājās līdz 1115 ms, un lielākā daļa pieprasījumu tika apstrādāti 800–1200 ms intervālā. Tas norāda, ka sistēma nespēj uzturēt augstu veiktspēju pie pēkšņas slodzes pieauguma, lai gan tā saglabā funkcionalitāti. Rezultāti liecina, ka sistēma ir stabila, bet ne optimizēta darbam pīķa slodzes apstākļos. |
 | Statisko resursu tests         | Visi resursi (HTML, CSS, attēli) ielādējas korekti.            | Statisko resursu testā tika pārbaudīta sākumlapas, CSS un favicon ielāde, kopumā nosūtot 150 HTTP pieprasījumus. Visi pieprasījumi tika apstrādāti veiksmīgi (100% OK, bez kļūdām). Vidējais atbildes laiks bija 30 ms, un 95% pieprasījumu tika apstrādāti ātrāk par 34 ms, kas liecina par labu sistēmas veiktspēju statisko resursu piegādē. Tomēr tika novēroti atsevišķi gadījumi ar augstāku atbildes laiku (līdz 1293 ms), kas var būt saistīti ar kešošanas neizmantošanu vai pirmreizēju resursu ielādi. Kopumā sistēma spēj efektīvi piegādāt statiskos resursus, nodrošinot ātru lietotāja pieredzi.    |
-
+   
+   
 Šeit pieejams kods izstrādātajām Gatling simulācijām, kas tika izmantotas, lai testētu sistēmas slodzes panesamību: [VERTEX simulācijas](TESTESANA-AR-GATLING)
+   
+  
 ---
 
 # Integrācijas testi
@@ -118,6 +122,7 @@ time,ax,ay,az,gnss_x,gnss_y,gnss_z
   
 **Sagaidāmais rezultāts:** Sensoru apvienošanas modulis aprēķina stabilu stāvokļa novērtējumu, un GUI šo novērtējumu attēlo bez lēcieniem, kļūdām vai datu sabrukuma.  
 **Rezultāts:** Datu apvienošanas rezultāts tiek korekti nodots GUI attēlošanai.
+
   
 ---
 # Secinājumi un ieteikumi
