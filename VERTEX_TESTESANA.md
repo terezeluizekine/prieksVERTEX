@@ -1,8 +1,8 @@
 # VERTEX projekta testēšana
 
-RTU Inženierzinātņu vidusskolas
-11. klases skolnieces
-**Kitija Kampiņa** un **Terēze Luīze Kīne**
+RTU Inženierzinātņu vidusskolas  
+11. klases skolnieces  
+**Kitija Kampiņa** un **Terēze Luīze Kīne**  
 
 ---
 
@@ -28,7 +28,7 @@ RTU Inženierzinātņu vidusskolas
 | Testa veids                    | Sagaidāmais rezultāts                                         | Rezultāts                                                       |
 | ------------------------------ | ------------------------------------------------------------- | --------------------------------------------------------------- |
 | Atvēršana no citiem datoriem   | Sistēma ir pieejama tīklā un darbojas citos datoros.           | Strādā. Sistēmu var atvērt no citiem datoriem.                  |
-| Atvēršana no mobilajām ierīcēm | Sistēma darbojas mobilajās ierīcēs ar pielāgotu UI.            | Nestrādā. aplikācija nav optimizēta mobilajām ierīcēm pēc projekta autoru ieskatiem.          |
+| Atvēršana no mobilajām ierīcēm | Sistēma darbojas mobilajās ierīcēs ar pielāgotu UI.            | Nestrādā. aplikācija nav optimizēta mobilajām ierīcēm.          |
 | Sākumlapas pieejamība          | Sistēma atbild uz pieprasījumu bez kļūdām.                     | Tika nosūtīts viens HTTP pieprasījums, kas tika apstrādāts veiksmīgi (100% OK, 0% kļūdu). Atbildes laiks bija 340 ms, kas norāda uz pieņemamu reakcijas ātrumu. Tomēr, ņemot vērā, ka tests ietvēra tikai vienu pieprasījumu, nav iespējams izdarīt secinājumus par sistēmas veiktspēju vai stabilitāti pie lielākas slodzes. Šis tests kalpo kā sākotnējais sistēmas pieejamības pārbaudījums (smoke test). |
 | Vienmērīga lietotāju slodze    | Sistēma uztur stabilu veiktspēju pie nemainīgas slodzes.       | Tika nosūtīti 300 HTTP pieprasījumi, no kuriem visi tika apstrādāti veiksmīgi (100% OK, 0% kļūdu). Vidējais atbildes laiks bija 29 ms, savukārt 95% pieprasījumu tika apstrādāti ātrāk par 66 ms, kas norāda uz ļoti labu sistēmas veiktspēju. Lai gan maksimālais atbildes laiks sasniedza 557 ms, šādi gadījumi bija reti un neietekmē kopējo sistēmas darbību. Rezultāti liecina, ka sistēma ir stabila un spēj efektīvi apkalpot lietotājus pie dotās slodzes.       |
 | Pieaugoša slodze (Ramp-up)     | Sistēma saglabā veiktspēju pie pakāpeniskas slodzes pieauguma. | Tika simulēts pakāpeniski pieaugošs lietotāju skaits, nosūtot 100 HTTP pieprasījumus 58 sekunžu laikā. Visi pieprasījumi tika apstrādāti veiksmīgi (100% OK, bez kļūdām). Vidējais atbildes laiks bija 18 ms, savukārt 95% pieprasījumu tika apstrādāti ātrāk par 26 ms, kas liecina par ļoti labu sistēmas veiktspēju arī pie pieaugošas slodzes. Maksimālais atbildes laiks sasniedza 175 ms, tomēr šādi gadījumi bija reti un neietekmēja kopējo sistēmas darbību. Rezultāti norāda, ka sistēma spēj stabili un efektīvi apkalpot lietotājus pie pakāpeniski pieaugošas slodzes bez būtiskas veiktspējas degradācijas.      |
@@ -120,6 +120,24 @@ time,ax,ay,az,gnss_x,gnss_y,gnss_z
 **Rezultāts:** Datu apvienošanas rezultāts tiek korekti nodots GUI attēlošanai.
   
 ---
-# Secinājumi
+# Secinājumi un ieteikumi
 
-jāuzraksta.
+## Secinājumi
+
+Programmas testēšanas rezultāti parāda, ka VERTEX sistēma kopumā darbojas korekti un izpilda tai paredzētās pamatfunkcijas. Funkcionālie testi apliecina, ka sistēma spēj ielādēt CSV failus, korekti attēlot lidojuma stāvokļus un apstrādāt dažādus kļūdu scenārijus, nodrošinot arī veiksmīgu atkopšanos.
+
+Nefunkcionālo testu rezultāti liecina, ka sistēma ir stabila pie normālas, pakāpeniski pieaugošas un ilgstošas slodzes. Tiek uzturēts zems atbildes laiks un netiek novērotas kļūmes. Tomēr pīķa slodzes apstākļos novērojama būtiska veiktspējas pasliktināšanās, kas norāda, ka sistēma saglabā funkcionalitāti, bet nav pilnībā optimizēta straujam lietotāju pieaugumam.
+
+Integrācijas testi apstiprina, ka galvenie sistēmas moduļi – CSV ielāde, datu parsēšana un GUI attēlošana – savstarpēji darbojas korekti arī nestandarta situācijās. Sistēma saglabā stabilitāti pie nepilnīgiem datiem, sajauktas secības un lielākas datu plūsmas.
+
+Kopumā sistēma ir funkcionāli pilnvērtīga un stabila, ar labu pamatu turpmākai attīstībai.
+
+## Ieteikumi
+
+- Ieteicams ieviest iespēju atkārtoti palaist testu ar to pašu CSV failu bez lapas pārlādes, piemēram, pievienojot Refresh vai Reset funkciju. Tas būtiski uzlabotu lietojamību.
+
+- Nepieciešams optimizēt sistēmas darbību pīķa slodzes apstākļos, lai samazinātu atbildes laiku pie strauja lietotāju skaita pieauguma.
+
+- Būtu vēlams uzlabot statisko resursu ielādi, ieviešot "cache" mehānismus un optimizējot pirmreizējo ielādi.
+
+- Ieteicams apsvērt responsīva dizaina ieviešanu, ja nākotnē plānota sistēmas izmantošana mobilajās ierīcēs.
