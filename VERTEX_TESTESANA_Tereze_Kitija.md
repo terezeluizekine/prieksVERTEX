@@ -38,7 +38,7 @@ RTU Inženierzinātņu vidusskolas
 | Statisko resursu tests         | Visi resursi (HTML, CSS, attēli) ielādējas korekti.            | Statisko resursu testā tika pārbaudīta sākumlapas, CSS un favicon ielāde, kopumā nosūtot 150 HTTP pieprasījumus. Visi pieprasījumi tika apstrādāti veiksmīgi (100% OK, bez kļūdām). Vidējais atbildes laiks bija 30 ms, un 95% pieprasījumu tika apstrādāti ātrāk par 34 ms, kas liecina par labu sistēmas veiktspēju statisko resursu piegādē. Tomēr tika novēroti atsevišķi gadījumi ar augstāku atbildes laiku (līdz 1293 ms), kas var būt saistīti ar kešošanas neizmantošanu vai pirmreizēju resursu ielādi. Kopumā sistēma spēj efektīvi piegādāt statiskos resursus, nodrošinot ātru lietotāja pieredzi.    |
    
    
-Šeit pieejams kods izstrādātajām Gatling simulācijām, kas tika izmantotas, lai testētu sistēmas slodzes panesamību: [VERTEX simulācijas](TESTESANA-AR-GATLING)
+## Šeit pieejams kods izstrādātajām Gatling simulācijām, kas tika izmantotas, lai testētu sistēmas slodzes panesamību: [VERTEX simulācijas](TESTESANA-AR-GATLING)
    
   
 ---
